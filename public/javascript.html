@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CÍM</title>
+</head>
+<body>
+<div id="app">
+    <h1>Szia {{name}} !</h1>
+
+    <input type="text" v-model="name">
+
+    <hr>
+
+<input type="text" id="feladatInput" placeholder="Mi a teendő?" v-model="newTodo">
+
+<button id="feladatsave" v-on:click="addTodo">Feladat hozzáadása</button>
+
+    <div v-if="todos.length == 0">
+        Nincs teendő
+    </div>
+
+
+<ul id="lista">
+    <li v-for="todo in todos">{{ todo }}</li>
+</ul>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            newTodo: '',
+            name:'Gyula',
+            todos: []
+        },
+        methods:{
+            addTodo(){
+                this.todos.push(this.newTodo);
+                this.newTodo='';
+            }
+        }
+
+    });
+
+</script>
+
+
+<script>
+
+
+/*function updateList(){
+    document.querySelector('#lista').innerHTML = '';
+
+    todos.forEach(function (todo){
+        document.querySelector('#lista').innerHTML += '<li>' + todo + '</li>';
+    })
+}
+
+let todos=[];
+
+document.querySelector('#feladatsave').addEventListener('click', function(){
+   let feladat = document.querySelector('#feladatInput').value;
+    todos.push(feladat);
+    updateList();
+    document.querySelector('#feladatInput').value = '';
+})
+*/
+</script>
+
+</body>
+</html>
